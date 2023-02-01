@@ -11,3 +11,9 @@ IDE : vs code
 5. 스테이지 진행 중 새로운 적이 추가
 6. 모든 스테이지 클리어 하면 엔딩 표시
 
+파이썬 문법  
+1. 윈도우 변경 불가
+```py
+root.resizable(False, False) #윈도우 창의 가로, 세로를 변경 불가로 설정
+canvas = tkinter.Canvas(width=720, height=540) #창 사이즈
+```
