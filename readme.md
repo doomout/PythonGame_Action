@@ -25,20 +25,20 @@ def move_penpen():  # 펜펜 움직이기
     global pen_x, pen_y, pen_d, pen_a
     if key == "Up":
         pen_d = DIR_UP
-        if check_wall(pen_x, pen_y, pen_d) == False:
-            pen_y = pen_y - 60
+        if check_wall(pen_x, pen_y, pen_d, 20) == False:
+            pen_y = pen_y - 20
     if key == "Down":
         pen_d = DIR_DOWN
-        if check_wall(pen_x, pen_y, pen_d) == False:
-            pen_y = pen_y + 60
+        if check_wall(pen_x, pen_y, pen_d, 20) == False:
+            pen_y = pen_y + 20
     if key == "Left":
         pen_d = DIR_LEFT
-        if check_wall(pen_x, pen_y, pen_d) == False:
-            pen_x = pen_x - 60
+        if check_wall(pen_x, pen_y, pen_d, 20) == False:
+            pen_x = pen_x - 20
     if key == "Right":
         pen_d = DIR_RIGHT
-        if check_wall(pen_x, pen_y, pen_d) == False:
-            pen_x = pen_x + 60
+        if check_wall(pen_x, pen_y, pen_d, 20) == False:
+            pen_x = pen_x + 20
     #펜펜 에니메이션 번호 계산        
     #각 방향마다 3개의 이미지를 사용하기에 *3 
     #tmr 값은 프레임 마다 증가하여  tmr % 4는 0>1>2>3> ... 을 반복한다
