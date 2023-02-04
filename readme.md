@@ -17,3 +17,40 @@ IDE : vs code
 root.resizable(False, False) #윈도우 창의 가로, 세로를 변경 불가로 설정
 canvas = tkinter.Canvas(width=720, height=540) #창 사이즈
 ```
+2. 케릭터 움직이는 함수
+```py
+#ANIMATION[]는 걸음을 표현하기 위해 넣은 번호를 넣은 리스트
+ANIMATION = [0,1,0,2]
+def move_penpen():  # 펜펜 움직이기
+    global pen_x, pen_y, pen_d, pen_a
+    if key == "Up":
+        pen_d = DIR_UP
+        if check_wall(pen_x, pen_y, pen_d) == False:
+            pen_y = pen_y - 60
+    if key == "Down":
+        pen_d = DIR_DOWN
+        if check_wall(pen_x, pen_y, pen_d) == False:
+            pen_y = pen_y + 60
+    if key == "Left":
+        pen_d = DIR_LEFT
+        if check_wall(pen_x, pen_y, pen_d) == False:
+            pen_x = pen_x - 60
+    if key == "Right":
+        pen_d = DIR_RIGHT
+        if check_wall(pen_x, pen_y, pen_d) == False:
+            pen_x = pen_x + 60
+    #펜펜 에니메이션 번호 계산        
+    #각 방향마다 3개의 이미지를 사용하기에 *3 
+    #tmr 값은 프레임 마다 증가하여  tmr % 4는 0>1>2>3> ... 을 반복한다
+    #ANIMATION[tmr % 4]은 인덱스 순서에 의해 0>1>0>2>....을 반복한다.
+    pen_a = pen_d * 3 + ANIMATION[tmr % 4] 
+```
+3. 2번 함수를 게임 화면 함수에 추가한다.
+```py
+def draw_screen():  # 게임 화면 그리기
+    canvas.delete("SCREEN") #먼저 화면 삭제
+    for y in range(9): #미로 그리기
+        for x in range(12):
+            canvas.create_image(x * 60 + 30, y * 60 + 30, image=img_bg[map_data[y][x]], tag="SCREEN")
+    canvas.create_image(pen_x, pen_y, image=img_pen[pen_a], tag="SCREEN") #pen_a #펜펜의 이미지 번호
+```

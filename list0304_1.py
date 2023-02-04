@@ -44,7 +44,7 @@ def draw_screen():  # 게임 화면 그리기
     for y in range(9): #미로 그리기
         for x in range(12):
             canvas.create_image(x * 60 + 30, y * 60 + 30, image=img_bg[map_data[y][x]], tag="SCREEN")
-    canvas.create_image(pen_x, pen_y, image=img_pen[pen_a], tag="SCREEN")
+    canvas.create_image(pen_x, pen_y, image=img_pen[pen_a], tag="SCREEN") #pen_a
 
 
 def check_wall(cx, cy, di):  # 각 방향에 벽 존재 여부 확인
