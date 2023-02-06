@@ -53,4 +53,18 @@ def draw_screen():  # 게임 화면 그리기
         for x in range(12):
             canvas.create_image(x * 60 + 30, y * 60 + 30, image=img_bg[map_data[y][x]], tag="SCREEN")
     canvas.create_image(pen_x, pen_y, image=img_pen[pen_a], tag="SCREEN") #pen_a #펜펜의 이미지 번호
+    draw_txt("SCORE " +  str(score), 200, 30, 30, "white") #점수 표시
+```
+4. 점수 표시 함수
+```py
+def draw_txt(txt, x, y, siz, col):
+    fnt = ("Times New Roman", siz, "bold")
+    canvas.create_text(x+2, y+2, text=txt, fill="black",font=fnt, tag="SCREEN") #문자열 그림자 효과
+    canvas.create_text(x, y, text=txt, fill=col,font=fnt, tag="SCREEN") #지정한 색으로 문자 표시
+```
+5. 사탕 처리 함수
+```py
+if map_data[my][mx] == 3: #사탕에 닿았나?
+        score = score + 100 #사탕 1개당 100점 부여
+        map_data[my][mx] = 2 #사탕을 일반 바닥으로 변경
 ```
