@@ -65,6 +65,41 @@ def draw_txt(txt, x, y, siz, col):
 5. 사탕 처리 함수
 ```py
 if map_data[my][mx] == 3: #사탕에 닿았나?
-        score = score + 100 #사탕 1개당 100점 부여
-        map_data[my][mx] = 2 #사탕을 일반 바닥으로 변경
+    score = score + 100 #사탕 1개당 100점 부여
+    map_data[my][mx] = 2 #사탕을 일반 바닥으로 변경
+    candy = candy - 1 #사탕 갯수 처리
+```
+6. 게임 플레이 규칙
+```py
+if idx == 0:#타이틀 화면
+    canvas.create_image(360, 200, image=img_title, tag="SCREEN")
+    if tmr % 10 < 5:
+        draw_txt("Press SPACE !", 360, 380, 30, "yellow")
+        if key == "space": #스페이스 입력시 시작
+            score = 0 
+            set_stage()
+            set_chara_pos()
+            idx = 1
+if idx == 1: #게임 플레이
+    move_penpen()
+    move_enemy()
+    if candy == 0: #캔디를 다 먹으면 4번으로 이동하여 게임 종료
+        idx = 4 
+        tmr = 0
+if idx == 2: #적과 충돌!
+    draw_txt("GAME OVER", 360, 270, 40, "red")
+    if tmr == 50: #5초 뒤 타이틀 화면으로 이동
+        idx = 0
+if idx == 4: #스테이지 클리어.
+    draw_txt("STAGE CLEAR", 360, 270, 40, "pink")
+    if tmr == 50: #5초 뒤 타이틀 화면으로 이동
+        idx = 0
+```
+7. 적과의 충돌 계산
+```py
+#이미지 크기는 60 픽셀이지만 40으로 설정한 이유 
+#사용자 눈에 보이기에 접촉한 것이 확인 되어야 하기에
+if abs(red_x - pen_x) <= 40 and abs(red_y - pen_y) <= 40: 
+        idx = 2
+        tmr = 0
 ```
