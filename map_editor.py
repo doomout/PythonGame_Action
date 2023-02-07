@@ -36,17 +36,17 @@ def select_chip(e):
     if 0 <= y and y < len(img): #클릭한 위치가 맵 칩이라면..
         chip = y #맵 칩 번호 대입
         draw_chip() #선택용 칩 그림
-
+#데이터 출력 함수
 def put_data():
-    c = 0
+    c = 0 #사탕 수 세는 변수
     text.delete("1.0", "end")
     for y in range(9):
         for x in range(12):
-            text.insert("end", str(map_data[y][x])+ ",")
-            if map_data[y][x] == 3:
-                c = c+1
-        text.insert("end", "\n")
-    text.insert("end", "candy = "+str(c))
+            text.insert("end", str(map_data[y][x])+ ",") #입력 필드에서 데이터 삽입
+            if map_data[y][x] == 3: #사탕이 있다면..
+                c = c+1 #사탕수 저장
+        text.insert("end", "\n") #줄바꿈 코드 삽입
+    text.insert("end", "candy = "+str(c)) #사탕수 삽입
 
 root = tkinter.Tk() #윈도우 객체 생성
 root.geometry("820x760") #크기 기정

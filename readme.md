@@ -100,9 +100,23 @@ if abs(red_x - pen_x) <= 40 and abs(red_y - pen_y) <= 40:
         idx = 2
         tmr = 0
 ```
-8. 맵 에디터 핵심 함수
+8. 맵 에디터 주요 함수
 ```py
 #두 개의 bind()명령으로 마우스로 그리듯 맵을 그릴 수 있다.
 cvs_bg.bind("<Button-1>", set_map) #클릭시 실행할 함수 지정
 cvs_bg.bind("<B1-Motion>", set_map) #클릭 + 포인터 이동시 실행할 함수 지정
+```
+9. 맵 에디터 데이터 출력 함수
+```py
+#데이터 출력 함수
+def put_data():
+    c = 0 #사탕 수 세는 변수
+    text.delete("1.0", "end")
+    for y in range(9):
+        for x in range(12):
+            text.insert("end", str(map_data[y][x])+ ",") #입력 필드에서 데이터 삽입
+            if map_data[y][x] == 3: #사탕이 있다면..
+                c = c+1 #사탕수 저장
+        text.insert("end", "\n") #줄바꿈 코드 삽입
+    text.insert("end", "candy = "+str(c)) #사탕수 삽입
 ```
