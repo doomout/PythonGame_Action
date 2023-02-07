@@ -100,3 +100,9 @@ if abs(red_x - pen_x) <= 40 and abs(red_y - pen_y) <= 40:
         idx = 2
         tmr = 0
 ```
+8. 맵 에디터 핵심 함수
+```py
+#두 개의 bind()명령으로 마우스로 그리듯 맵을 그릴 수 있다.
+cvs_bg.bind("<Button-1>", set_map) #클릭시 실행할 함수 지정
+cvs_bg.bind("<B1-Motion>", set_map) #클릭 + 포인터 이동시 실행할 함수 지정
+```
