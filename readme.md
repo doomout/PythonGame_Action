@@ -120,3 +120,4 @@ def put_data():
         text.insert("end", "\n") #줄바꿈 코드 삽입
     text.insert("end", "candy = "+str(c)) #사탕수 삽입
 ```
+https://user-images.githubusercontent.com/13861731/217332340-0e97de5d-62dd-4f1f-b23d-aed415f3118d.png
